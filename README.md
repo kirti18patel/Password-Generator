@@ -1,6 +1,6 @@
 # Password-Generator
 
-# Password-Generator Deployed Link
+## Password-Generator Deployed Link
 click the link below to visit the website : [Password-Generator Link](https://kirti18patel.github.io/Password-Generator/)
 
 ## Repository
