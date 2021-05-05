@@ -1,16 +1,20 @@
 var inputLength = function(){
-    return (prompt("Enter length of password : \nMinimum is 8\nMaximum is 20"));
+    return (prompt("How many characters would you like your password to contain?"));
 };
 
 var passwordGenerator = function() {
     var length = inputLength();
     if(!isNaN(length) && length!=null && length<=20 && length>=8){
         alert("You have entered password length : " + length);
-        var numbersInPassword = prompt("How many characters woulld you like your password to contain?\nMinimum is 0\nMaximum is" + length);
+        var specialCharactersInPassword = confirm("Click OK to add special characters.");
+        var numbersInPassword = confirm("Click OK to add numeric characters.");
+        var lowerCaseCharacterInPassword = confirm("Click OK to add lowercase character.");
+        var upperCaseCharacterInPassword = confirm("Click OK to add uppercase characters.");
+
     }
     else{
-        var lenghtConfirmation=confirm("You have entered wrong choice.\nClick OK to enter value again or click CANCEL to exit");
-        if(lenghtConfirmation){
+        var lengthConfirmation=confirm("You have entered wrong choice.\nClick OK to enter value again or click CANCEL to exit");
+        if(lengthConfirmation){
             passwordGenerator();
         }
         else{
