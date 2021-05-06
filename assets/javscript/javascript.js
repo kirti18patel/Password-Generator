@@ -9,6 +9,7 @@ var password = [];
 
 // variable to track number of letters added in "password" array
 var tracker = 0;
+
 //  shuffle all items in array 
 var shuffle = function(array) {
     for (let i = array.length - 1; i > 0; i--) {
@@ -18,54 +19,8 @@ var shuffle = function(array) {
 }
 
 // return random index value
-
 var randomNumberIndex = function(number){
     return Math.floor(Math.random()*(number.length));
-};
-
-// generate password in random fashion by recieving data enetred by user
-var passwordGenerator = function(collectedData){
-
-    // check if user want to add special characters, then generate random special characters and add to password array
-    if (collectedData[1]==true){
-        for(var i=0; i<2; i++){
-            var randomNumber = randomNumberIndex(setOfSpecialCharacters);
-            password.push(setOfSpecialCharacters[randomNumber]);
-            tracker+=1;
-        }
-    }
-
-    // check if user want to add numbers, then generate random number and add to password array
-    if (collectedData[2]== true){
-        for(var i=0; i<2; i++){
-        var randomNumber = randomNumberIndex(setOfNumbers);
-        password.push(setOfNumbers[randomNumber]);
-        tracker+=1;
-        }
-    }
-    // check if user want to add uppercase characters, then generate random uppercase characters and add to password array
-    if (collectedData[4]== true){
-        for(var i=0; i<2; i++){
-        var randomNumber =  randomNumberIndex(setOfUppercaseAlphabets);
-        password.push(setOfUppercaseAlphabets[randomNumber]);
-        tracker+=1;
-        }
-    }
-
-    // check if user want to add lowercase characters, then generate random lowercase characters and add to password array
-    if (collectedData[3]== true){
-        for(var i=0; i<(collectedData[0]-tracker); i++){
-        var randomNumber =  randomNumberIndex(setOfLowercaseAlphabets);
-        password.push(setOfLowercaseAlphabets[randomNumber]);
-        }
-    }
-
-    console.log("tracker", tracker);
-
-    // shuffle the elements of array
-    shuffle(password);
-    // join all the elements of password array as a string and return it
-    return password.join("");
 };
 
 // update final password generated in the textarea element of webpage
@@ -82,6 +37,72 @@ var updatePassword = function(finalPassword){
 // return password length of user's choice
 var inputLength = function(){
     return (prompt("How many characters would you like your password to contain?"));
+};
+
+// generate password in random fashion by recieving data enetred by user
+var passwordGenerator = function(collectedData){
+
+    // check if user want to add special characters, then generate random special characters and add to password array
+    if (collectedData[1]===true){
+        for(var i=0; i<2; i++){
+            var randomNumber = randomNumberIndex(setOfSpecialCharacters);
+            password.push(setOfSpecialCharacters[randomNumber]);
+            tracker+=1;
+        }
+    }
+
+    // check if user want to add numbers, then generate random number and add to password array
+    if (collectedData[2]=== true){
+        for(var i=0; i<2; i++){
+        var randomNumber = randomNumberIndex(setOfNumbers);
+        password.push(setOfNumbers[randomNumber]);
+        tracker+=1;
+        }
+    }
+    // check if user want to add uppercase characters, then generate random uppercase characters and add to password array
+    if (collectedData[4]=== true){
+        for(var i=0; i<2; i++){
+        var randomNumber =  randomNumberIndex(setOfUppercaseAlphabets);
+        password.push(setOfUppercaseAlphabets[randomNumber]);
+        tracker+=1;
+        }
+    }    
+
+    // check if user want to add lowercase characters, then generate random lowercase characters and add to password array
+    if (collectedData[3]=== true){
+        for(var i=0; i<(collectedData[0]-tracker); i++){
+        var randomNumber =  randomNumberIndex(setOfLowercaseAlphabets);
+        password.push(setOfLowercaseAlphabets[randomNumber]);
+        }
+    }
+    // if user-not choose to include lowercase characters
+    else{
+        var temp=[];
+        for(var j=4; j>0; j--){
+            if(collectedData[j]===true){
+                console.log("true");
+                switch(j){
+                    case 1: temp=setOfSpecialCharacters;
+                            break;
+                    case 2: temp=setOfNumbers;
+                            break; 
+                    case 4: temp=setOfUppercaseAlphabets;
+                            break;
+                    default:;                    
+                }
+                break;
+            }
+        }
+        for(var i=0; i<(collectedData[0]-tracker); i++){
+            var randomNumber =  randomNumberIndex(temp);
+            password.push(temp[randomNumber]);
+        }
+    }
+
+    // shuffle the elements of array
+    shuffle(password);
+    // join all the elements of password array as a string and return it
+    return password.join("");
 };
 
 // throws some question to collect data for criteria of password
