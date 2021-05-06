@@ -2,7 +2,7 @@
 var setOfNumbers = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
 var setOfLowercaseAlphabets = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 var setOfUppercaseAlphabets = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
-var setOfSpecialCharacters = ["!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "<", ">", "?", "{", "}", "/"];
+var setOfSpecialCharacters = ["!","'", ",", '"', "@", "#", "$", "%", "^", "&", "*", "+", "-", ".", ":", ";", "=", "[", "]","_", "~", "`", "|", "(", ")", "<", ">", "?", "{", "}", "/"];
 
 // blank array for password
 var password = [];
@@ -80,7 +80,6 @@ var passwordGenerator = function(collectedData){
         var temp=[];
         for(var j=4; j>0; j--){
             if(collectedData[j]===true){
-                console.log("true");
                 switch(j){
                     case 1: temp=setOfSpecialCharacters;
                             break;
